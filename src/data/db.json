@@ -1,0 +1,327 @@
+{
+  "topics": [
+    {
+      "topic_id": "1",
+      "name": "Food Quality",
+      "sub_topics": [
+        { "sub_topic_id": "1", "name": "Taste" },
+        { "sub_topic_id": "2", "name": "Freshness" },
+        { "sub_topic_id": "3", "name": "Temperature" },
+        { "sub_topic_id": "4", "name": "Presentation" },
+        { "sub_topic_id": "5", "name": "Portion Size" },
+        { "sub_topic_id": "6", "name": "Texture" },
+        { "sub_topic_id": "7", "name": "Aroma" },
+        { "sub_topic_id": "8", "name": "Variety" },
+        { "sub_topic_id": "9", "name": "Seasoning" },
+        { "sub_topic_id": "10", "name": "Consistency" },
+        { "sub_topic_id": "11", "name": "Nutritional Value" },
+        { "sub_topic_id": "12", "name": "Special Dietary Options" },
+        { "sub_topic_id": "13", "name": "Authenticity" },
+        { "sub_topic_id": "14", "name": "Food Safety" },
+        { "sub_topic_id": "15", "name": "Use of Local Ingredients" }
+      ]
+    },
+    {
+      "topic_id": "2",
+      "name": "Customer Service",
+      "sub_topics": [
+        { "sub_topic_id": "16", "name": "Staff Friendliness" },
+        { "sub_topic_id": "17", "name": "Attentiveness" },
+        { "sub_topic_id": "18", "name": "Response Time" },
+        { "sub_topic_id": "19", "name": "Knowledge of Menu" },
+        { "sub_topic_id": "20", "name": "Professionalism" },
+        { "sub_topic_id": "21", "name": "Problem Resolution" },
+        { "sub_topic_id": "22", "name": "Greeting upon Arrival" },
+        { "sub_topic_id": "23", "name": "Billing Efficiency" },
+        { "sub_topic_id": "24", "name": "Availability of Staff" },
+        { "sub_topic_id": "25", "name": "Proactive Service" },
+        { "sub_topic_id": "26", "name": "Politeness" },
+        { "sub_topic_id": "27", "name": "Clarity of Communication" },
+        { "sub_topic_id": "28", "name": "Follow-ups on Requests" },
+        { "sub_topic_id": "29", "name": "Respect for Personal Space" },
+        { "sub_topic_id": "30", "name": "Knowledge of Special Offers" }
+      ]
+    },
+    {
+      "topic_id": "3",
+      "name": "Restaurant Ambiance",
+      "sub_topics": [
+        { "sub_topic_id": "1", "name": "Lighting" },
+        { "sub_topic_id": "2", "name": "Music" },
+        { "sub_topic_id": "3", "name": "Seating Comfort" },
+        { "sub_topic_id": "4", "name": "Decor and Design" },
+        { "sub_topic_id": "5", "name": "Cleanliness" },
+        { "sub_topic_id": "6", "name": "Temperature Control" },
+        { "sub_topic_id": "7", "name": "Spacing between Tables" },
+        { "sub_topic_id": "8", "name": "Noise Level" },
+        { "sub_topic_id": "9", "name": "Scents/Air Quality" },
+        { "sub_topic_id": "10", "name": "Accessibility" },
+        { "sub_topic_id": "11", "name": "Outdoor Seating Options" },
+        { "sub_topic_id": "12", "name": "Restroom Cleanliness" },
+        { "sub_topic_id": "13", "name": "Wall Art or Displays" },
+        { "sub_topic_id": "14", "name": "Cultural or Theme Representation" },
+        { "sub_topic_id": "15", "name": "Flow of Movement" }
+      ]
+    }
+  ],
+  "data": {
+    "topicIds": ["1", "2", "3"],
+    "topics": {
+      "1": {
+        "topic_id": "1",
+        "name": "Food Quality",
+        "sub_topic_ids": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15"
+        ]
+      },
+      "2": {
+        "topic_id": "2",
+        "name": "Customer Service",
+        "sub_topic_ids": [
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30"
+        ]
+      },
+      "3": {
+        "topic_id": "3",
+        "name": "Restaurant Ambiance",
+        "sub_topic_ids": [
+          "31",
+          "32",
+          "33",
+          "34",
+          "35",
+          "36",
+          "37",
+          "38",
+          "39",
+          "40",
+          "41",
+          "42",
+          "43",
+          "44",
+          "45"
+        ]
+      }
+    },
+    "sub_topics": {
+      "1": {
+        "sub_topic_id": "1",
+        "name": "Taste"
+      },
+      "2": {
+        "sub_topic_id": "2",
+        "name": "Freshness"
+      },
+      "3": {
+        "sub_topic_id": "3",
+        "name": "Temperature"
+      },
+      "4": {
+        "sub_topic_id": "4",
+        "name": "Presentation"
+      },
+      "5": {
+        "sub_topic_id": "5",
+        "name": "Portion Size"
+      },
+      "6": {
+        "sub_topic_id": "6",
+        "name": "Texture"
+      },
+      "7": {
+        "sub_topic_id": "7",
+        "name": "Aroma"
+      },
+      "8": {
+        "sub_topic_id": "8",
+        "name": "Variety"
+      },
+      "9": {
+        "sub_topic_id": "9",
+        "name": "Seasoning"
+      },
+      "10": {
+        "sub_topic_id": "10",
+        "name": "Consistency"
+      },
+      "11": {
+        "sub_topic_id": "11",
+        "name": "Nutritional Value"
+      },
+      "12": {
+        "sub_topic_id": "12",
+        "name": "Special Dietary Options"
+      },
+      "13": { "sub_topic_id": "13", "name": "Authenticity" },
+      "14": { "sub_topic_id": "14", "name": "Food Safety" },
+      "15": { "sub_topic_id": "15", "name": "Use of Local Ingredients" },
+      "16": { "sub_topic_id": "16", "name": "Staff Friendliness" },
+      "17": { "sub_topic_id": "17", "name": "Attentiveness" },
+      "18": { "sub_topic_id": "18", "name": "Response Time" },
+      "19": { "sub_topic_id": "19", "name": "Knowledge of Menu" },
+      "20": { "sub_topic_id": "20", "name": "Professionalism" },
+      "21": { "sub_topic_id": "21", "name": "Problem Resolution" },
+      "22": { "sub_topic_id": "22", "name": "Greeting upon Arrival" },
+      "23": { "sub_topic_id": "23", "name": "Billing Efficiency" },
+      "24": { "sub_topic_id": "24", "name": "Availability of Staff" },
+      "25": { "sub_topic_id": "25", "name": "Proactive Service" },
+      "26": { "sub_topic_id": "26", "name": "Politeness" },
+      "27": { "sub_topic_id": "27", "name": "Clarity of Communication" },
+      "28": { "sub_topic_id": "28", "name": "Follow-ups on Requests" },
+      "29": { "sub_topic_id": "29", "name": "Respect for Personal Space" },
+      "30": { "sub_topic_id": "30", "name": "Knowledge of Special Offers" },
+      "31": { "sub_topic_id": "31", "name": "Lighting" },
+      "32": { "sub_topic_id": "32", "name": "Music" },
+      "33": { "sub_topic_id": "33", "name": "Seating Comfort" },
+      "34": { "sub_topic_id": "34", "name": "Decor and Design" },
+      "35": { "sub_topic_id": "35", "name": "Cleanliness" },
+      "36": { "sub_topic_id": "36", "name": "Temperature Control" },
+      "37": { "sub_topic_id": "37", "name": "Spacing between Tables" },
+      "38": { "sub_topic_id": "38", "name": "Noise Level" },
+      "39": { "sub_topic_id": "39", "name": "Scents/Air Quality" },
+      "40": { "sub_topic_id": "40", "name": "Accessibility" },
+      "41": { "sub_topic_id": "41", "name": "Outdoor Seating Options" },
+      "42": { "sub_topic_id": "42", "name": "Restroom Cleanliness" },
+      "43": { "sub_topic_id": "43", "name": "Wall Art or Displays" },
+      "44": {
+        "sub_topic_id": "44",
+        "name": "Cultural or Theme Representation"
+      },
+      "45": { "sub_topic_id": "45", "name": "Flow of Movement" }
+    }
+  },
+  "datas": {
+    "topicIds": ["1", "2", "3"],
+    "topics": {
+      "1": {
+        "topic_id": "1",
+        "name": "Food Quality",
+        "sub_topic_ids": ["1", "2", "3", "4", "5"]
+      },
+      "2": {
+        "topic_id": "2",
+        "name": "Customer Service",
+        "sub_topic_ids": ["16", "17", "18", "19", "20"]
+      },
+      "3": {
+        "topic_id": "3",
+        "name": "Restaurant Ambiance",
+        "sub_topic_ids": ["31", "32", "33", "34", "35"]
+      }
+    },
+    "sub_topics": {
+      "1": {
+        "sub_topic_id": "1",
+        "name": "Taste"
+      },
+      "2": {
+        "sub_topic_id": "2",
+        "name": "Freshness"
+      },
+      "3": {
+        "sub_topic_id": "3",
+        "name": "Temperature"
+      },
+      "4": {
+        "sub_topic_id": "4",
+        "name": "Presentation"
+      },
+      "5": {
+        "sub_topic_id": "5",
+        "name": "Portion Size"
+      },
+      "6": {
+        "sub_topic_id": "6",
+        "name": "Texture"
+      },
+      "7": {
+        "sub_topic_id": "7",
+        "name": "Aroma"
+      },
+      "8": {
+        "sub_topic_id": "8",
+        "name": "Variety"
+      },
+      "9": {
+        "sub_topic_id": "9",
+        "name": "Seasoning"
+      },
+      "10": {
+        "sub_topic_id": "10",
+        "name": "Consistency"
+      },
+      "11": {
+        "sub_topic_id": "11",
+        "name": "Nutritional Value"
+      },
+      "12": {
+        "sub_topic_id": "12",
+        "name": "Special Dietary Options"
+      },
+      "13": { "sub_topic_id": "13", "name": "Authenticity" },
+      "14": { "sub_topic_id": "14", "name": "Food Safety" },
+      "15": { "sub_topic_id": "15", "name": "Use of Local Ingredients" },
+      "16": { "sub_topic_id": "16", "name": "Staff Friendliness" },
+      "17": { "sub_topic_id": "17", "name": "Attentiveness" },
+      "18": { "sub_topic_id": "18", "name": "Response Time" },
+      "19": { "sub_topic_id": "19", "name": "Knowledge of Menu" },
+      "20": { "sub_topic_id": "20", "name": "Professionalism" },
+      "21": { "sub_topic_id": "21", "name": "Problem Resolution" },
+      "22": { "sub_topic_id": "22", "name": "Greeting upon Arrival" },
+      "23": { "sub_topic_id": "23", "name": "Billing Efficiency" },
+      "24": { "sub_topic_id": "24", "name": "Availability of Staff" },
+      "25": { "sub_topic_id": "25", "name": "Proactive Service" },
+      "26": { "sub_topic_id": "26", "name": "Politeness" },
+      "27": { "sub_topic_id": "27", "name": "Clarity of Communication" },
+      "28": { "sub_topic_id": "28", "name": "Follow-ups on Requests" },
+      "29": { "sub_topic_id": "29", "name": "Respect for Personal Space" },
+      "30": { "sub_topic_id": "30", "name": "Knowledge of Special Offers" },
+      "31": { "sub_topic_id": "31", "name": "Lighting" },
+      "32": { "sub_topic_id": "32", "name": "Music" },
+      "33": { "sub_topic_id": "33", "name": "Seating Comfort" },
+      "34": { "sub_topic_id": "34", "name": "Decor and Design" },
+      "35": { "sub_topic_id": "35", "name": "Cleanliness" },
+      "36": { "sub_topic_id": "36", "name": "Temperature Control" },
+      "37": { "sub_topic_id": "37", "name": "Spacing between Tables" },
+      "38": { "sub_topic_id": "38", "name": "Noise Level" },
+      "39": { "sub_topic_id": "39", "name": "Scents/Air Quality" },
+      "40": { "sub_topic_id": "40", "name": "Accessibility" },
+      "41": { "sub_topic_id": "41", "name": "Outdoor Seating Options" },
+      "42": { "sub_topic_id": "42", "name": "Restroom Cleanliness" },
+      "43": { "sub_topic_id": "43", "name": "Wall Art or Displays" },
+      "44": {
+        "sub_topic_id": "44",
+        "name": "Cultural or Theme Representation"
+      },
+      "45": { "sub_topic_id": "45", "name": "Flow of Movement" }
+    }
+  }
+}
