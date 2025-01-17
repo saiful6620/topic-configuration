@@ -11,6 +11,7 @@ interface SubTopicProps {
 }
 
 const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
+  const [clickTimeout, setClickTimeout] = useState<number | null>(null);
   const {
     state: { selected },
     dispatch,
@@ -52,6 +53,7 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
   };
 
   const toggleSubTopicSelection = () => {
+    console.log("first");
     dispatch({
       type: "SELECT_UNSELECT_SUB_TOPIC",
       payload: {
@@ -70,6 +72,20 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
     setIsEditing(true);
   };
 
+  const handleSubTopicClick = (): void => {
+    if (clickTimeout) {
+      clearTimeout(clickTimeout);
+      setClickTimeout(null);
+      openEditSubTopicName();
+    } else {
+      const timeout = setTimeout(() => {
+        toggleSubTopicSelection();
+        setClickTimeout(null);
+      }, 200);
+      setClickTimeout(timeout);
+    }
+  };
+
   useEffect(() => {
     if (isEditing) {
       inputRef.current?.focus();
@@ -84,29 +100,20 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
         ...selectedStyle,
       }}
       className={styles.subTopic}
+      onClick={handleSubTopicClick}
     >
       {!isEditing && (
-        <Fragment>
-          <button
-            className={`${styles.subTopicActionButton} ${styles.dragHandle}`}
-            {...listeners}
-            {...attributes}
-            ref={setActivatorNodeRef}
-          >
-            <GripVertical size={16} />
-          </button>
-          <button
-            className={`${styles.subTopicActionButton}  ${styles.subTopicSelectButton}`}
-            onClick={toggleSubTopicSelection}
-          >
-            <CircleCheck size={16} />
-          </button>
-        </Fragment>
+        <button
+          className={`${styles.subTopicActionButton} ${styles.dragHandle}`}
+          {...listeners}
+          {...attributes}
+          ref={setActivatorNodeRef}
+        >
+          <GripVertical size={16} />
+        </button>
       )}
       <div className={styles.subTopicNameWrapper}>
         <p
-          onDoubleClick={openEditSubTopicName}
-          // onClick={(e) => e.stopPropagation()}
           style={{
             display: isEditing ? "none" : "block",
             margin: "0px",
