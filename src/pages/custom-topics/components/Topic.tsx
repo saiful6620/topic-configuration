@@ -5,13 +5,17 @@ import { ChevronRight } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useCustomTopicContext } from "../context/TopicContext";
 import { useDroppable } from "@dnd-kit/core";
+import BulkAction from "./BulkAction";
 
 interface TopicsProps {
   topic: ITopic;
 }
 
 const Topic = ({ topic }: TopicsProps) => {
-  const { dispatch } = useCustomTopicContext();
+  const {
+    state: { selected },
+    dispatch,
+  } = useCustomTopicContext();
   const topicNameInputRef = useRef<HTMLInputElement>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [topicName, setTopicName] = useState(topic.name);
@@ -45,38 +49,42 @@ const Topic = ({ topic }: TopicsProps) => {
   }, [isEditing]);
 
   return (
-    <div>
-      <div className={styles.topicHeader}>
+    <div className={styles.topicContainer}>
+      <div className={styles.topicHeaderWrapper}>
         <ChevronRight size={24} />
-        <div
-          style={{ display: "inline-block", backgroundColor: "orange" }}
-          onDoubleClick={openEditTopicName}
-        >
-          <p
-            style={{
-              display: isEditing ? "none" : "inline-block",
-              margin: "0px",
-              padding: "8px",
-              cursor: "pointer",
-            }}
+        <div className={styles.topicHeader}>
+          <div
+            style={{ display: "inline-block" }}
+            onDoubleClick={openEditTopicName}
           >
-            {topic.name}
-          </p>
-          <input
-            style={{ display: isEditing ? "block" : "none" }}
-            type="text"
-            value={topicName}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setTopicName(e.target.value)
-            }
-            onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-              if (e.key === "Enter") {
-                handleTopicNameChange();
+            <p
+              style={{
+                display: isEditing ? "none" : "inline-block",
+                margin: "0px",
+                fontSize: "14px",
+                lineHeight: "21px",
+                cursor: "pointer",
+              }}
+            >
+              {topic.name}
+            </p>
+            <input
+              style={{ display: isEditing ? "block" : "none" }}
+              type="text"
+              value={topicName}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setTopicName(e.target.value)
               }
-            }}
-            onBlur={handleTopicNameChange}
-            ref={topicNameInputRef}
-          />
+              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                if (e.key === "Enter") {
+                  handleTopicNameChange();
+                }
+              }}
+              onBlur={handleTopicNameChange}
+              ref={topicNameInputRef}
+            />
+          </div>
+          {selected.topic_id === topic.topic_id ? <BulkAction /> : null}
         </div>
       </div>
       <div ref={setNodeRef} style={{ ...style, minHeight: "10px" }}>

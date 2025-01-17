@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { ISubTopic } from "../types";
 import styles from "./SubTopic.module.css";
 import { useCustomTopicContext } from "../context/TopicContext";
 import { useDraggable } from "@dnd-kit/core";
-import { GripVertical } from "lucide-react";
+import { CircleCheck, GripVertical, XCircle } from "lucide-react";
 
 interface SubTopicProps {
   subTopic: ISubTopic;
@@ -12,7 +12,7 @@ interface SubTopicProps {
 
 const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
   const {
-    state: { selectedSubTopicId },
+    state: { selected },
     dispatch,
   } = useCustomTopicContext();
   const [isEditing, setIsEditing] = useState(false);
@@ -22,19 +22,22 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
     useDraggable({
       id: `${topicId}_${subTopic.sub_topic_id}_subTopic`,
       data: { topicId, subTopicId: subTopic.sub_topic_id },
-      disabled: isEditing,
+      disabled: isEditing || selected.sub_topic_ids.length > 0,
     });
   const style = transform
     ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        zIndex: 10,
+        backgroundColor: "gray",
+        color: "white",
       }
     : undefined;
 
-  // const selectedStyle = selectedSubTopicId.includes(
-  //   subTopic.sub_topic_id as string
-  // )
-  //   ? { backgroundColor: "red" }
-  //   : undefined;
+  const selectedStyle = selected.sub_topic_ids.includes(
+    subTopic.sub_topic_id as string
+  )
+    ? { backgroundColor: "darkgray", color: "white" }
+    : undefined;
 
   const handleSubTopicNameChange = () => {
     dispatch({
@@ -48,20 +51,27 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
     setIsEditing(false);
   };
 
-  const openEditSubTopicName = () => {
-    setIsEditing(true);
-  };
-
-  const toggleSubTopicSelection = (subTopicId: string) => {
+  const toggleSubTopicSelection = () => {
     dispatch({
       type: "SELECT_UNSELECT_SUB_TOPIC",
-      payload: subTopicId,
+      payload: {
+        sub_topic_id: subTopic.sub_topic_id,
+        topic_id: topicId,
+      },
     });
+  };
+
+  const openEditSubTopicName = () => {
+    if (
+      selected.sub_topic_ids.includes(subTopic.sub_topic_id as string) ||
+      isEditing
+    )
+      return;
+    setIsEditing(true);
   };
 
   useEffect(() => {
     if (isEditing) {
-      console.log(inputRef.current);
       inputRef.current?.focus();
     }
   }, [isEditing]);
@@ -71,48 +81,68 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
       ref={setNodeRef}
       style={{
         ...style,
-        // ...selectedStyle,
+        ...selectedStyle,
       }}
       className={styles.subTopic}
     >
       {!isEditing && (
-        <button
-          className={styles.dragHandle}
-          {...listeners}
-          {...attributes}
-          ref={setActivatorNodeRef}
+        <Fragment>
+          <button
+            className={`${styles.subTopicActionButton} ${styles.dragHandle}`}
+            {...listeners}
+            {...attributes}
+            ref={setActivatorNodeRef}
+          >
+            <GripVertical size={16} />
+          </button>
+          <button
+            className={`${styles.subTopicActionButton}  ${styles.subTopicSelectButton}`}
+            onClick={toggleSubTopicSelection}
+          >
+            <CircleCheck size={16} />
+          </button>
+        </Fragment>
+      )}
+      <div className={styles.subTopicNameWrapper}>
+        <p
+          onDoubleClick={openEditSubTopicName}
+          // onClick={(e) => e.stopPropagation()}
+          style={{
+            display: isEditing ? "none" : "block",
+            margin: "0px",
+            padding: "0px",
+            lineHeight: "1",
+          }}
         >
-          <GripVertical size={16} />
+          {subTopic.name}
+        </p>
+        <input
+          className={styles.subTopicInput}
+          style={{
+            display: isEditing ? "inline-block" : "none",
+          }}
+          type="text"
+          value={subTopicName}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setSubTopicName(e.target.value)
+          }
+          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === "Enter") {
+              handleSubTopicNameChange();
+            }
+          }}
+          onBlur={handleSubTopicNameChange}
+          ref={inputRef}
+        />
+      </div>
+      {!isEditing && selected.topic_id === null && (
+        <button
+          className={`${styles.subTopicActionButton} ${styles.subTopicDeleteButton}`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <XCircle size={16} />
         </button>
       )}
-      <p
-        onClick={() => toggleSubTopicSelection(subTopic.sub_topic_id as string)}
-        onDoubleClick={openEditSubTopicName}
-        style={{
-          display: isEditing ? "none" : "block",
-          margin: "0px",
-          padding: "8px",
-        }}
-      >
-        {subTopic.name}
-      </p>
-      <input
-        style={{
-          display: isEditing ? "block" : "none",
-        }}
-        type="text"
-        value={subTopicName}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setSubTopicName(e.target.value)
-        }
-        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-          if (e.key === "Enter") {
-            handleSubTopicNameChange();
-          }
-        }}
-        onBlur={handleSubTopicNameChange}
-        ref={inputRef}
-      />
     </div>
   );
 };

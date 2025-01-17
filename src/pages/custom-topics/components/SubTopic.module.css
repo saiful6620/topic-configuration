@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  padding: 16px;
 }
 
 .subTopic {
@@ -18,13 +19,71 @@
   box-shadow: none;
 }
 
-.dragHandle {
+.subTopicNameWrapper {
+}
+
+.subTopicInput:focus,
+.subTopicInput:focus-visible {
+  outline: none;
+  border-bottom: 1px solid #000;
+  min-width: min-content;
+  padding: 0px 4px;
+}
+
+.subTopicActionButton {
   background-color: transparent;
   display: flex;
   align-items: center;
   border: none;
-  padding: 2px 4px;
-  border-radius: 8px;
-  cursor: grab;
-  height: 100%;
+  padding: 0;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+.dragHandle {
+  border-radius: 1px;
+  margin-right: 4px;
+  cursor: move;
+}
+
+.subTopicDeleteButton {
+  margin-left: 4px;
+}
+
+.subTopicDeleteButton:focus,
+.subTopicDeleteButton:focus-visible {
+  outline: none;
+}
+
+.subTopicSelectButton {
+  margin-right: 4px;
+}
+
+.dragHandle:focus,
+.dragHandle:focus-visible,
+.subTopicSelectButton:focus,
+.subTopicSelectButton:focus-visible,
+.subTopicDeleteButton:focus,
+.subTopicDeleteButton:focus-visible {
+  outline: none;
+}
+
+.dragHandle,
+.subTopicSelectButton,
+.subTopicDeleteButton {
+  width: 0;
+  transition: color 0.2s ease;
+  transition: width 0.1s ease, color 0.2s ease;
+}
+
+.dragHandle:hover,
+.subTopicSelectButton:hover,
+.subTopicDeleteButton:hover {
+  color: #747474;
+}
+
+.subTopic:hover .dragHandle,
+.subTopic:hover .subTopicSelectButton,
+.subTopic:hover .subTopicDeleteButton {
+  width: 16px;
 }

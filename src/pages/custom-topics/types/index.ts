@@ -9,6 +9,16 @@ export interface ISubTopic {
   name: string;
 }
 
+export interface ITopicDataApiData {
+  topicIds: string[];
+  topics: {
+    [key: string]: ITopic;
+  };
+  sub_topics: {
+    [key: string]: ISubTopic;
+  };
+}
+
 export interface ITopicData {
   topicIds: string[];
   topics: {
@@ -17,13 +27,16 @@ export interface ITopicData {
   sub_topics: {
     [key: string]: ISubTopic;
   };
-  selectedSubTopicId: string[];
+  selected: {
+    sub_topic_ids: string[];
+    topic_id: string | number | null;
+  };
 }
 
 export type CustomTopicAction =
   | {
       type: "INITIALIZE_API_DATA";
-      payload: ITopicData;
+      payload: ITopicDataApiData;
     }
   | {
       type: "EDIT_TOPIC_NAME";
@@ -54,5 +67,14 @@ export type CustomTopicAction =
     }
   | {
       type: "SELECT_UNSELECT_SUB_TOPIC";
-      payload: number | string;
+      payload: {
+        sub_topic_id: number | string;
+        topic_id: number | string;
+      };
+    }
+  | {
+      type: "DELETE_SUB_TOPIC";
+    }
+  | {
+      type: "RESET_SELECTED";
     };

@@ -4,18 +4,24 @@ export const initialState: ITopicData = {
   topicIds: [],
   topics: {},
   sub_topics: {},
-  selectedSubTopicId: [],
+  selected: {
+    sub_topic_ids: [],
+    topic_id: null,
+  },
 };
 
 export const customTopicReducer = (
   state: ITopicData,
   action: CustomTopicAction
-) => {
+): ITopicData => {
   switch (action.type) {
     case "INITIALIZE_API_DATA":
       return {
         ...action.payload,
-        selectedSubTopicId: [],
+        selected: {
+          sub_topic_ids: [],
+          topic_id: null,
+        },
       };
     case "EDIT_TOPIC_NAME":
       const { topic_id, name: topic_name } = action.payload;
@@ -62,14 +68,56 @@ export const customTopicReducer = (
       };
 
     case "SELECT_UNSELECT_SUB_TOPIC":
-      const selectedSubTopicId = [...state.selectedSubTopicId];
-      const newSelectedSubTopicId = selectedSubTopicId.concat([
-        action.payload as string,
-      ]);
-      console.log(Array.from(new Set(newSelectedSubTopicId)));
+      const { sub_topic_id: subTopicId, topic_id: topicId } = action.payload;
+
+      if (
+        state.selected.topic_id !== null &&
+        state.selected.topic_id !== topicId
+      ) {
+        return state;
+      }
+      const selectedSubTopicId = [...state.selected.sub_topic_ids];
+      const indexOfItem = selectedSubTopicId.indexOf(subTopicId as string);
+      if (indexOfItem === -1) {
+        selectedSubTopicId.push(subTopicId as string);
+      } else {
+        selectedSubTopicId.splice(indexOfItem, 1);
+      }
+
       return {
         ...state,
-        selectedSubTopicId: Array.from(new Set(newSelectedSubTopicId)),
+        selected: {
+          sub_topic_ids: selectedSubTopicId,
+          topic_id: selectedSubTopicId.length > 0 ? topicId : null,
+        },
+      };
+
+    case "DELETE_SUB_TOPIC":
+      const { sub_topic_ids, topic_id: parentTopicId } = state.selected;
+      if (sub_topic_ids.length === 0 || !parentTopicId) return state;
+      const topic = { ...state.topics[parentTopicId] };
+      topic.sub_topic_ids = topic.sub_topic_ids.filter(
+        (id) => !sub_topic_ids.includes(id)
+      );
+      return {
+        ...state,
+        topics: {
+          ...state.topics,
+          [parentTopicId]: topic,
+        },
+        selected: {
+          sub_topic_ids: [],
+          topic_id: null,
+        },
+      };
+
+    case "RESET_SELECTED":
+      return {
+        ...state,
+        selected: {
+          sub_topic_ids: [],
+          topic_id: null,
+        },
       };
 
     default:
