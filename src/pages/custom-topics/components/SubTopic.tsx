@@ -102,7 +102,7 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
       className={styles.subTopic}
       onClick={handleSubTopicClick}
     >
-      {!isEditing && (
+      {!isEditing && selected.topic_id === null && (
         <button
           className={`${styles.subTopicActionButton} ${styles.dragHandle}`}
           {...listeners}
@@ -114,11 +114,9 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
       )}
       <div className={styles.subTopicNameWrapper}>
         <p
+          className={styles.subTopicName}
           style={{
             display: isEditing ? "none" : "block",
-            margin: "0px",
-            padding: "0px",
-            lineHeight: "1",
           }}
         >
           {subTopic.name}
