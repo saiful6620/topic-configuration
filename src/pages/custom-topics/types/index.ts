@@ -83,4 +83,11 @@ export type CustomTopicAction =
       payload: {
         target_id: number | string;
       };
+    }
+  | {
+      type: "MERGE_SUB_TOPIC";
+      payload: {
+        id: string;
+        name: string;
+      };
     };

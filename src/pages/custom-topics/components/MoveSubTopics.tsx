@@ -15,7 +15,7 @@ interface MoveSubTopicsProps {
 
 const MoveSubTopics = ({ close }: MoveSubTopicsProps) => {
   const { state, dispatch } = useCustomTopicContext();
-  const [selected, setSelected] = useState<ITopic | undefined>(undefined);
+  const [selected, setSelected] = useState<ITopic | null>(null);
   const [options, setOptions] = useState<ITopic[]>([]);
 
   const handleMoveSubTopic = () => {

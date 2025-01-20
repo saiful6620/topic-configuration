@@ -1,3 +1,4 @@
+import { random } from "lodash";
 import { CustomTopicAction, ITopicData } from "../types";
 
 export const initialState: ITopicData = {
@@ -133,6 +134,33 @@ export const customTopicReducer = (
           [state.selected.topic_id as string]: source_topic,
           [targetTopicId]: targe_topic,
         },
+        selected: {
+          sub_topic_ids: [],
+          topic_id: null,
+        },
+      };
+
+    case "MERGE_SUB_TOPIC":
+      const {id, name} = action.payload;
+      const topicCopy = { ...state.topics[state.selected.topic_id as string] };
+      topicCopy.sub_topic_ids = topicCopy.sub_topic_ids.filter(
+        (id) => !state.selected.sub_topic_ids.includes(id)
+      );
+      topicCopy.sub_topic_ids = topicCopy.sub_topic_ids.concat([id]);
+      const newSubTopic = {
+        sub_topic_id: id,
+        name: name,
+      };
+
+      const subTopicObject = { ...state.sub_topics };
+      subTopicObject[id] = newSubTopic;
+      return {
+        ...state,
+        topics: {
+          ...state.topics,
+          [state.selected.topic_id as string]: topicCopy,
+        },
+        sub_topics: subTopicObject,
         selected: {
           sub_topic_ids: [],
           topic_id: null,
