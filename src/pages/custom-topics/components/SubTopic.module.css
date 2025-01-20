@@ -22,32 +22,41 @@
 }
 
 .subTopicNameWrapper {
+  display: flex;
+  align-items: center;
 }
 
-.subTopicName {
-  overflow: hidden;
-  white-space: nowrap;
+.subTopicName,
+.subTopicNameTrasition {
   margin: 0px;
   padding: 0px;
   line-height: 1.2;
   font-size: 14px;
+}
+
+.subTopicNameTrasition {
+  overflow: hidden;
+  white-space: nowrap;
   transition: transform 0.15s ease;
 }
 
-.subTopic:hover .subTopicName {
+.subTopic:hover .subTopicNameTrasition {
   overflow: ellipsis;
   transform: translate(14px, 0px);
   overflow-x: hidden;
 }
 
+.subTopicInput {
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 0px 4px;
+}
+
 .subTopicInput:focus,
 .subTopicInput:focus-visible {
   outline: none;
-  border-bottom: 1px solid #000;
-  min-width: min-content;
-  padding: 0px 4px;
-  font-size: 16px;
-  line-height: 1.2;
+  border-bottom: 1px solid #1e8bf9;
+  max-width: 120px;
 }
 
 .subTopicActionButton {

@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ISubTopic } from "../types";
 import styles from "./SubTopic.module.css";
 import { useCustomTopicContext } from "../context/TopicContext";
 import { useDraggable } from "@dnd-kit/core";
-import { CircleCheck, GripVertical, XCircle } from "lucide-react";
+import { GripVertical, XCircle } from "lucide-react";
 
 interface SubTopicProps {
   subTopic: ISubTopic;
@@ -53,7 +53,6 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
   };
 
   const toggleSubTopicSelection = () => {
-    console.log("first");
     dispatch({
       type: "SELECT_UNSELECT_SUB_TOPIC",
       payload: {
@@ -114,7 +113,11 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
       )}
       <div className={styles.subTopicNameWrapper}>
         <p
-          className={styles.subTopicName}
+          className={
+            selected.topic_id === null
+              ? styles.subTopicNameTrasition
+              : styles.subTopicName
+          }
           style={{
             display: isEditing ? "none" : "block",
           }}
@@ -125,6 +128,7 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
           className={styles.subTopicInput}
           style={{
             display: isEditing ? "inline-block" : "none",
+            // display: "inline-block",
           }}
           type="text"
           value={subTopicName}
