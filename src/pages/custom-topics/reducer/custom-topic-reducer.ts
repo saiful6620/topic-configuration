@@ -111,6 +111,34 @@ export const customTopicReducer = (
         },
       };
 
+    case "MOVE_SUB_TOPIC":
+      const { target_id: targetTopicId } = action.payload;
+      const source_topic = {
+        ...state.topics[state.selected.topic_id as string],
+      };
+      const targe_topic = { ...state.topics[targetTopicId] };
+
+      source_topic.sub_topic_ids = source_topic.sub_topic_ids.filter(
+        (id) => !state.selected.sub_topic_ids.includes(id)
+      );
+
+      targe_topic.sub_topic_ids = targe_topic.sub_topic_ids.concat(
+        state.selected.sub_topic_ids
+      );
+
+      return {
+        ...state,
+        topics: {
+          ...state.topics,
+          [state.selected.topic_id as string]: source_topic,
+          [targetTopicId]: targe_topic,
+        },
+        selected: {
+          sub_topic_ids: [],
+          topic_id: null,
+        },
+      };
+
     case "RESET_SELECTED":
       return {
         ...state,

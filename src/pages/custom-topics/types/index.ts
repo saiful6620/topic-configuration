@@ -77,4 +77,10 @@ export type CustomTopicAction =
     }
   | {
       type: "RESET_SELECTED";
+    }
+  | {
+      type: "MOVE_SUB_TOPIC";
+      payload: {
+        target_id: number | string;
+      };
     };
