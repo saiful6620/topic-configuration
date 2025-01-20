@@ -50,7 +50,14 @@ const Topic = ({ topic }: TopicsProps) => {
 
   return (
     <div className={styles.topicContainer}>
-      <div className={styles.topicHeaderWrapper}>
+      <div
+        className={styles.topicHeaderWrapper}
+        style={{
+          backgroundColor:
+            selected.topic_id === topic.topic_id ? "#404040" : undefined,
+          color: selected.topic_id === topic.topic_id ? "white" : undefined,
+        }}
+      >
         <ChevronRight size={24} />
         <div className={styles.topicHeader}>
           <div
