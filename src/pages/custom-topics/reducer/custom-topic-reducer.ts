@@ -112,6 +112,21 @@ export const customTopicReducer = (
         },
       };
 
+    case "SINGLE_DELETE_SUB_TOPIC":
+      const { topic_id: sdParentTopicId, sub_topic_id: sdSubTopicId } =
+        action.payload;
+      const extractedTopic = { ...state.topics[sdParentTopicId] };
+      extractedTopic.sub_topic_ids = extractedTopic.sub_topic_ids.filter(
+        (id) => id !== sdSubTopicId
+      );
+      return {
+        ...state,
+        topics: {
+          ...state.topics,
+          [sdParentTopicId]: extractedTopic,
+        },
+      };
+
     case "MOVE_SUB_TOPIC":
       const { target_id: targetTopicId } = action.payload;
       const source_topic = {
@@ -141,7 +156,7 @@ export const customTopicReducer = (
       };
 
     case "MERGE_SUB_TOPIC":
-      const {id, name} = action.payload;
+      const { id, name } = action.payload;
       const topicCopy = { ...state.topics[state.selected.topic_id as string] };
       topicCopy.sub_topic_ids = topicCopy.sub_topic_ids.filter(
         (id) => !state.selected.sub_topic_ids.includes(id)

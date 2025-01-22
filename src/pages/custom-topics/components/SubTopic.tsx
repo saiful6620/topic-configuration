@@ -29,8 +29,6 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
     ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
         zIndex: 10,
-        backgroundColor: "gray",
-        color: "white",
       }
     : undefined;
 
@@ -83,6 +81,19 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
       }, 200);
       setClickTimeout(timeout);
     }
+  };
+
+  const handleSingleDeleteSubTopic = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    e.stopPropagation();
+    dispatch({
+      type: "SINGLE_DELETE_SUB_TOPIC",
+      payload: {
+        topic_id: topicId,
+        sub_topic_id: subTopic.sub_topic_id,
+      },
+    });
   };
 
   useEffect(() => {
@@ -147,7 +158,7 @@ const SubTopic = ({ subTopic, topicId }: SubTopicProps) => {
       {!isEditing && selected.topic_id === null && (
         <button
           className={`${styles.subTopicActionButton} ${styles.subTopicDeleteButton}`}
-          onClick={(e) => e.stopPropagation()}
+          onClick={handleSingleDeleteSubTopic}
         >
           <XCircle size={16} />
         </button>

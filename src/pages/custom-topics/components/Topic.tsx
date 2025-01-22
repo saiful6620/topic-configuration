@@ -24,7 +24,7 @@ const Topic = ({ topic }: TopicsProps) => {
     data: { topicId: topic.topic_id },
   });
   const style: CSSProperties = {
-    backgroundColor: isOver ? "green" : undefined,
+    backgroundColor: isOver ? "#404040" : undefined,
   };
 
   const handleTopicNameChange = () => {

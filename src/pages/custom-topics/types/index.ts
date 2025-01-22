@@ -75,6 +75,13 @@ export type CustomTopicAction =
   | {
       type: "DELETE_SUB_TOPIC";
     }
+    | {
+      type: "SINGLE_DELETE_SUB_TOPIC";
+      payload: {
+        topic_id: number | string;
+        sub_topic_id: number | string;
+      };
+    }
   | {
       type: "RESET_SELECTED";
     }
