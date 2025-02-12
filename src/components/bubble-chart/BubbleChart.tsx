@@ -32,11 +32,11 @@ import * as d3 from "d3";
 const BubbleChart: React.FC<BubbleChartProps> = ({
   data = [],
   width = 600,
-  height = 600,
+  height = 500,
   minRadius = 40,
-  maxRadius = 80,
+  maxRadius = 220,
   borderWidth = 16,
-  colors = ["#FF0000", "#00FF00", "#FFD700"],
+  colors = ["#9E3B6B", "#79F3AA", "#2B69D5"],
   padding = 10,
 }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -77,7 +77,7 @@ const BubbleChart: React.FC<BubbleChartProps> = ({
       .attr("height", height)
       .attr(
         "style",
-        `max-width: 100%; height: auto; display: block; margin: 0 auto; background: lightblue;`
+        `max-width: 100%; height: auto; display: block; margin: 0 auto; background: lightgray;`
       );
 
     // Scale for bubble sizes
@@ -125,11 +125,6 @@ const BubbleChart: React.FC<BubbleChartProps> = ({
 
     // Function to handle tooltip show
     const showTooltip = (event: MouseEvent, text: string): void => {
-      console.log({
-        pageX: event.x,
-        screenX: event.screenX,
-        y: event.y,
-      });
       setTooltip({
         show: true,
         text,
@@ -224,7 +219,7 @@ const BubbleChartExample: React.FC = () => {
   const sampleData: BubbleData[] = [
     {
       id: 1,
-      value: 100,
+      value: 190,
       label: "Bubble 1",
       totalUsers: 1500,
       category: "Product A",
@@ -303,7 +298,7 @@ const BubbleChartExample: React.FC = () => {
         minRadius={50}
         maxRadius={220}
         borderWidth={16}
-        colors={["#FF0000", "#00FF00", "#FFD700"]}
+        colors={["#9E3B6B", "#79F3AA", "#2B69D5"]}
         padding={10}
       />
     </div>
