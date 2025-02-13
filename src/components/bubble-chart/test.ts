@@ -50,7 +50,7 @@ export const data = {
     {
       name: "Food Price",
       showLabel: false,
-      color: "#DC8C67",
+      color: "#DD67CE",
       children: [
         {
           name: "Price",
@@ -73,7 +73,7 @@ export const data = {
     {
       name: "Customer Retention",
       showLabel: false,
-      color: "#DDD267",
+      color: "#DD6788",
       children: [
         {
           name: "Repeat Customer",
@@ -100,7 +100,7 @@ export const data = {
     {
       name: "Restaurant Ambiance",
       showLabel: false,
-      color: "#DD6788",
+      color: "#DC8C67",
       children: [
         {
           name: "Taste",
@@ -123,7 +123,7 @@ export const data = {
     {
       name: "Environment Cleanliness",
       showLabel: false,
-      color: "#A0DC67",
+      color: "#DDD267",
       children: [
         {
           name: "Clean and Comfortable",
@@ -146,7 +146,7 @@ export const data = {
     {
       name: "Staff Behavior",
       showLabel: false,
-      color: "#67DB76",
+      color: "#A0DC67",
       children: [
         {
           name: "Customer Service",
@@ -169,7 +169,7 @@ export const data = {
     {
       name: "Food Variety",
       showLabel: false,
-      color: "#DD67CE",
+      color: "#67DB76",
       children: [
         {
           name: "Taste",

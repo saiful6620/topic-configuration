@@ -58,7 +58,6 @@ function BubbleChartMock() {
 
     series.circles.template.setAll({
       fillOpacity: 0.5,
-      strokeWidth: 1,
       strokeOpacity: 1,
     });
 
@@ -68,7 +67,10 @@ function BubbleChartMock() {
       fontFamily: "Fira Sans",
       fontWeight: "normal",
       textAlign: "center",
-      breakWords: true,
+      paddingLeft: 4,
+      paddingRight: 4,
+      paddingTop: 4,
+      paddingBottom: 4,
     });
 
     series.circles.template.adapters.add("stroke", function (stroke, target) {
@@ -77,6 +79,12 @@ function BubbleChartMock() {
         return am5.color(target?.dataItem?.dataContext?.color);
       }
       return stroke;
+    });
+
+    series.circles.template.adapters.add("strokeWidth", function (_, target) {
+      if (target?.dataItem?.dataContext?.name === "Root") return 0;
+      if (target?.dataItem?.dataContext?.showLabel === false) return 2;
+      return 1;
     });
 
     series.circles.template.adapters.add("fill", function (fill, target) {

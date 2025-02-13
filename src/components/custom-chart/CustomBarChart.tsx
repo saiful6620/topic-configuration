@@ -1,3 +1,6 @@
+import { getSentimentColorByValue } from "../../utils/helper";
+import CustomBar from "./CustomBar";
+
 interface CustomBarChartProps {
   topic: {
     name: string;
@@ -28,7 +31,7 @@ const CustomBarChart = ({
         {name}
       </div>
       <div className="flex w-full overflow-clip rounded-sm">
-        <div
+        {/* <div
           className="h-[18px] bg-green-300 flex justify-center items-center text-xs"
           style={{ flexBasis: `${(sentiments.positive / total) * 100}%` }}
         >
@@ -51,7 +54,16 @@ const CustomBarChart = ({
           style={{ flexBasis: `${(sentiments.neutral / total) * 100}%` }}
         >
           {`${Math.round((sentiments.neutral / total) * 100)}%`}
-        </div>
+        </div> */}
+        {Object.entries(sentiments).map(([sentiment, value]) => (
+          <CustomBar
+            key={sentiment}
+            sentiment={sentiment}
+            sentimentValue={value}
+            total={total}
+            bgColor={getSentimentColorByValue(sentiment)}
+          />
+        ))}
       </div>
     </div>
   );
