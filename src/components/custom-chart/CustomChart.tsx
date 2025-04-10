@@ -2,11 +2,24 @@ import { color } from "d3";
 import BubbleChartMock from "../bubble-chart/BubbleChartMock";
 import CustomBarChart from "./CustomBarChart";
 
+const colors = [
+  "#B58FC2",
+  "#A778B4",
+  "#6F4C9B",
+  "#6059A9",
+  "#4D8AC6",
+  "#60AB9E",
+  "#A6BE54",
+  "#E78C35",
+  "#DF4828",
+  "#DA2222",
+];
+
 const topics = [
   {
     name: "Food Quality",
     total: 19,
-    color: "#6771DC",
+    color: colors[0],
     sentiments: {
       veryPositive: 2,
       positive: 2,
@@ -19,7 +32,7 @@ const topics = [
   {
     name: "Customer Service",
     total: 35,
-    color: "#A367DB",
+    color: colors[1],
     sentiments: {
       veryPositive: 2,
       positive: 6,
@@ -32,7 +45,7 @@ const topics = [
   {
     name: "Restaurant Ambiance",
     total: 51,
-    color: "#DC8C67",
+    color: colors[2],
     sentiments: {
       veryPositive: 2,
       positive: 10,
@@ -45,7 +58,7 @@ const topics = [
   {
     name: "Environment Cleanliness",
     total: 19,
-    color: "#DDD267",
+    color: colors[3],
     sentiments: {
       veryPositive: 2,
       positive: 2,
@@ -58,7 +71,7 @@ const topics = [
   {
     name: "Customer Retention",
     total: 19,
-    color: "#DD6788",
+    color: colors[4],
     sentiments: {
       veryPositive: 2,
       positive: 2,
@@ -71,7 +84,7 @@ const topics = [
   {
     name: "Staff Behavior",
     total: 51,
-    color: "#A0DC67",
+    color: colors[5],
     sentiments: {
       veryPositive: 2,
       positive: 10,
@@ -84,7 +97,7 @@ const topics = [
   {
     name: "Food Variety",
     total: 19,
-    color: "#67DB76",
+    color: colors[6],
     sentiments: {
       veryPositive: 2,
       positive: 2,
@@ -97,7 +110,7 @@ const topics = [
   {
     name: "Food Price",
     total: 19,
-    color: "#DD67CE",
+    color: colors[7],
     sentiments: {
       veryPositive: 2,
       positive: 2,

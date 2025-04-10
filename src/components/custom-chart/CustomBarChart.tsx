@@ -31,30 +31,6 @@ const CustomBarChart = ({
         {name}
       </div>
       <div className="flex w-full overflow-clip rounded-sm">
-        {/* <div
-          className="h-[18px] bg-green-300 flex justify-center items-center text-xs"
-          style={{ flexBasis: `${(sentiments.positive / total) * 100}%` }}
-        >
-          {`${Math.round((sentiments.positive / total) * 100)}%`}
-        </div>
-        <div
-          className="h-[18px] bg-red-400 flex justify-center items-center text-xs"
-          style={{ flexBasis: `${(sentiments.negative / total) * 100}%` }}
-        >
-          {`${Math.round((sentiments.negative / total) * 100)}%`}
-        </div>
-        <div
-          className="h-[18px] bg-orange-300 flex justify-center items-center text-xs"
-          style={{ flexBasis: `${(sentiments.mixed / total) * 100}%` }}
-        >
-          {`${Math.round((sentiments.mixed / total) * 100)}%`}
-        </div>
-        <div
-          className="h-[18px] bg-gray-300 flex justify-center items-center text-xs"
-          style={{ flexBasis: `${(sentiments.neutral / total) * 100}%` }}
-        >
-          {`${Math.round((sentiments.neutral / total) * 100)}%`}
-        </div> */}
         {Object.entries(sentiments).map(([sentiment, value]) => (
           <CustomBar
             key={sentiment}

@@ -43,16 +43,6 @@ function BubbleChartMock() {
         valueField: "value",
         categoryField: "name",
         childDataField: "children",
-        // tooltip: am5.Tooltip.new(root, {
-        //   paddingBottom: 0,
-        //   paddingLeft: 0,
-        //   paddingRight: 0,
-        //   paddingTop: 0,
-        //   background: am5.Rectangle.new(root, {
-        //     strokeWidth: 0,
-        //     fillOpacity: 0,
-        //   }),
-        // }),
       })
     );
 
